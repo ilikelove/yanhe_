@@ -1,0 +1,30 @@
+{
+    "name": "thtf/yanhe_",
+    "description": "yanhe iframe",
+    "type": "project",
+    "authors": [
+        {
+            "name": "YanHe",
+            "email": "515575698@qq.com"
+        }
+    ],
+    "minimum-stability":"dev",
+    "require": {},
+    "autoload":{
+        "files":[
+            "system/helper.php"
+        ],
+        "psr-4":{
+            "houdun\\":"houdun",
+            "app\\":"app",
+            "system\\":"system"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
+
