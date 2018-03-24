@@ -5,7 +5,6 @@ Class View{
 //    当实例化一个不存在的类的时候，执行此方法
    public function __call($name,$arguments){
       return  self::parseAction($name,$arguments);
-
     }
 //    当实例化一个不存在的静态方法时，执行此方法
     public static function __callStatic($name, $arguments)

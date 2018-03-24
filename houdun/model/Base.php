@@ -1,15 +1,14 @@
 <?php
 namespace houdun\model;
-
 use PDO;
 use Exception;
 //基础类
 class  Base{
     private static $pdo=null;
-    private $table;//操作的数据表
-    private $where ='';//where条件
-    private $order ='';//order排序
-    private $limit='';//limit截取
+    private $table;
+    private $where ='';
+    private $order ='';
+    private $limit='';
     public function __construct($class){
        self::connect();
       $this->table=strtolower(ltrim(strrchr( $class ,'\\'),'\\'));
@@ -24,26 +23,19 @@ class  Base{
         }
         public function limit($limit){
             $this->limit=$limit ? ' limit ' . $limit :'';
-
             return $this;
         }
     public function get(){
-
         $sql='select * from ' . $this->table . $this->where . $this->order . $this->limit;
-
         return $this->query($sql);
     }
-
-
 public function find($pri){
 
 $priFiedld = $this->getPriFied();
     $sql ='select * from ' . $this->table . ' where ' . $priFiedld.'='.$pri;
-
     return current($this->query($sql));
 }
     private function getPriFied(){
-
         $res=$this->query(' desc ' . $this->table);
         foreach ($res as $v){
             if($v['Key']=='PRI'){
@@ -71,18 +63,13 @@ $priFiedld = $this->getPriFied();
      * @return null|PDO
      */
     public function query ($sql){
-
         try{
-
             $res =self::$pdo->query($sql);
-
-
             return $res->fetchAll(PDO::FETCH_ASSOC);
         }catch(Exception $e){
             throw new Exception($e->getMessage());
         }
     }
-
     public function exec($sql){
         try{
             return self::$pdo->exec($sql);
